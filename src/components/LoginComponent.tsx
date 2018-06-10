@@ -9,7 +9,7 @@ type Props = {
   user: User,
   errors: {
     summary?: string,
-    email?: string,
+    username?: string,
     password?: string
   }
 };
@@ -32,9 +32,9 @@ class LoginComponent extends React.Component<Props, States> {
             <TextField
               floatingLabelText="Tài khoản"
               name="username"
-              errorText={errors.email}
+              errorText={errors.username}
               onChange={onChange}
-              value={user.email}
+              value={user.username}
             />
           </div>
 

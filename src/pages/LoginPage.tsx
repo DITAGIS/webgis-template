@@ -6,7 +6,7 @@ type State = {
   user: User
   errors: {
     summary?: string,
-    email?: string,
+    username?: string,
     password?: string
   }
   successMessage: string
@@ -30,7 +30,7 @@ class LoginPage extends React.Component<Props, State> {
 
     this.state = {
       user: {
-        email: '',
+        username: '',
         password: ''
       },
       errors: {},
@@ -94,7 +94,6 @@ class LoginPage extends React.Component<Props, State> {
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
-
     this.setState({
       user
     });
@@ -102,8 +101,8 @@ class LoginPage extends React.Component<Props, State> {
   render() {
     return (
       <LoginComponent
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
+        onSubmit={this.processForm.bind(this)}
+        onChange={this.changeUser.bind(this)}
         errors={this.state.errors}
         successMessage={this.state.successMessage}
         user={this.state.user}
