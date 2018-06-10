@@ -104,7 +104,8 @@ module.exports = env => {
       global: false
     },
     devServer: {
-      port: 4000
+      port: 4000,
+      historyApiFallback: true
     }
   };
 };
