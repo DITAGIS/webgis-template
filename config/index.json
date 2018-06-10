@@ -1,0 +1,4 @@
+{
+  "dbUri": "mssql://sa:Ditagis123@ditagis.com/BinhDuong_HeThongVienThong",
+  "jwtSecret": "a secret phrase!!"
+}

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import LoginComponent from '../components/LoginComponent';
 import User from '../models/User';
-
+import Auth from '../modules/Auth';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 type State = {
   user: User
   errors: {
@@ -13,8 +14,8 @@ type State = {
 };
 
 type Props = {
-  // toggleAuthenticateStatus: () => void
-};
+  toggleAuthenticateStatus: () => void
+} & RouteComponentProps<null>;
 
 class LoginPage extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -43,13 +44,13 @@ class LoginPage extends React.Component<Props, State> {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
+    const username = encodeURIComponent(this.state.user.username);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
+    const formData = `username=${username}&password=${password}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
+    xhr.open('post', 'http://localhost:3000/auth/login');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
@@ -62,14 +63,14 @@ class LoginPage extends React.Component<Props, State> {
         });
 
         // save the token
-        // Auth.authenticateUser(xhr.response.token);
+        Auth.authenticateUser(xhr.response.token);
 
         // update authenticated state
-        // this.props.toggleAuthenticateStatus();
+        this.props.toggleAuthenticateStatus();
 
         // redirect signed in user to dashboard
-        // this.props.history.push('/dashboard');
-        this.context.router.replace('/');
+        this.props.history.push('/map');
+        // this.context.router.replace('/');
       } else {
         // failure
 
@@ -111,4 +112,4 @@ class LoginPage extends React.Component<Props, State> {
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

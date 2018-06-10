@@ -9,7 +9,7 @@ type States = {
 };
 
 const classes = {
-  container: 'container'
+  container: 'mapDiv'
 };
 
 class LoginComponent extends React.Component<Props, States> {
@@ -25,10 +25,11 @@ class LoginComponent extends React.Component<Props, States> {
 
   render() {
     return (
-      <div className={classes.container}>
+      <div className={classes.container}
         ref={
           (element: HTMLDivElement) => this.mapDiv = element
-        }>
+        }
+      >
       </div>
     );
   }

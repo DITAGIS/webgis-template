@@ -13,10 +13,15 @@ class HomePage extends React.Component {
       <Card className={classes.container}>
         <CardTitle title="Ứng dụng WEBGIS" subtitle="Hệ thống quản lý." />
         <CardText style={{ fontSize: '16px', color: 'green' }}>Lời chào...</CardText>
-        {!Auth.isUserAuthenticated() &&
+        {!Auth.isUserAuthenticated() ? (
           < CardText >
             Vui lòng  <Link to={'/login'}>đăng nhập</Link> để truy cập ứng dụng
           </CardText>
+        ) : (
+            < CardText >
+              Truy cập <Link to={'/map'}>bản đồ</Link>
+          </CardText>
+          )
         }
       </Card >
     );
