@@ -1,3 +1,7 @@
+# Sample using @arcgis/webpack-plugin
+
+## Usage
+
 ```
 npm install
 

@@ -5,6 +5,7 @@ const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
 
 (esriConfig.workers as any).loaderUrl = DEFAULT_LOADER_URL;
 esriConfig.workers.loaderConfig = {
+  locale:"vi",
   baseUrl: `${DEFAULT_WORKER_URL}dojo`,
   packages: [
     { name: "esri", location: DEFAULT_WORKER_URL + "esri" },
